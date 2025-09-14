@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Grazi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --btn-left:#8a2be2; /* roxo escuro */
+      --btn-right:#a020f0; /* roxo mais claro */
+      --glow: rgba(160,32,240,0.35);
+      --text:#ffffff;
+      --heart:#ff69b4; /* rosa */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Poppins,system-ui,Segoe UI,Roboto,Arial}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .stage{
+      width:100%;max-width:420px;padding:40px 20px;display:flex;flex-direction:column;align-items:center;
+    }
+    .top-text{
+      font-size:32px;font-weight:700;text-align:center;margin-bottom:60px;line-height:1.05;text-shadow:0 2px 8px rgba(0,0,0,0.6);
+    }
+    /* botão principal */
+    .neon-btn{
+      position:relative;display:inline-flex;align-items:center;gap:18px;padding:18px 42px;border-radius:42px;border:none;cursor:pointer;
+      background:linear-gradient(90deg,var(--btn-left),var(--btn-right));
+      box-shadow:0 8px 30px var(--glow), inset 0 2px 8px rgba(255,255,255,0.06);
+      transform:translateZ(0);
+    }
+    .neon-btn:before{
+      content:'';position:absolute;inset:-8px;border-radius:50px;filter:blur(18px);opacity:0.9;background:linear-gradient(90deg,var(--btn-left),var(--btn-right));z-index:-2;
+    }
+    .neon-btn:after{
+      content:'';position:absolute;left:6px;right:6px;bottom:-16px;height:20px;border-radius:20px;filter:blur(22px);background:linear-gradient(90deg,var(--btn-left),var(--btn-right));opacity:0.25;z-index:-3;
+    }
+    .heart{
+      width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;background:var(--heart);
+      box-shadow:0 6px 16px rgba(255,105,180,0.35), inset 0 2px 6px rgba(255,255,255,0.18);
+      font-size:16px;line-height:1;color:white;flex:0 0 28px
+    }
+    .label{font-weight:700;font-size:22px;letter-spacing:1px;color:var(--text);text-shadow:0 1px 0 rgba(0,0,0,0.35)}
+
+    /* responsividade */
+    @media (max-width:420px){
+      .top-text{font-size:26px;margin-bottom:40px}
+      .neon-btn{padding:14px 32px;border-radius:36px}
+      .label{font-size:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="top-text">Fiz esse site totalmente dedicado<br>a você. Espero que goste💕</div>
+
+   <button class="neon-btn" aria-label="botão clique" onclick="window.location.href='outra_tela.html'">
+      <span class="heart">💗</span>
+      <span class="label">CLIQUE</span>
+    </button>
+  </div>
+
+  <script>
+    // pequena animação ao passar o mouse
+    const btn = document.querySelector('.neon-btn');
+    btn.addEventListener('mouseenter', ()=>{
+      btn.style.transform = 'translateY(-6px) scale(1.02)';
+    });
+    btn.addEventListener('mouseleave', ()=>{
+      btn.style.transform = 'translateY(0) scale(1)';
+    });
+  </script>
+</body>
+</html>
